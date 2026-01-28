@@ -1,0 +1,86 @@
+@font-face {
+  font-family: title;
+  src: url(../../assets/font/Inter/static/Inter_18pt-SemiBold.ttf);
+}
+@font-face {
+  font-family: text;
+  src: url(../../assets/font/Inter/static/Inter_28pt-Regular.ttf);
+}
+@font-face {
+  font-family: bouton;
+  src: url(../../assets/font/Inter/static/Inter_18pt-Medium.ttf);
+}
+
+/* Variable global */
+
+:root {
+  --test: #252832ec;
+}
+
+:root {
+  --backgroundPrincipal: #20222d;
+  --backgroundCarte: #20232e;
+  --backgroundHeaderFooter: #242731;
+  --textPrincipal: #c8d4e4;
+  --textSecondairePlaceholder: #e1e1e1;
+  --bouttonPrincipal: #559cd2;
+  --bordure: #3c4154;
+  --backgroundListe: #141720;
+}
+
+body {
+  background: #20222d;
+  background: linear-gradient(
+    164deg,
+    rgba(32, 34, 45, 1) 0%,
+    rgba(60, 65, 84, 1) 60%,
+    rgba(85, 156, 210, 1) 100%
+  );
+}
+main {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 82vh;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--bouttonPrincipal);
+  border: none;
+  padding: 0.5em;
+  color: var(--textSecondairePlaceholder);
+  border-radius: 5px;
+  font-family: bouton, sans-serif;
+}
+button:hover {
+  background-color: #1d6fdb;
+}
+li {
+  list-style: none;
+}
+h1 {
+  color: var(--textPrincipal);
+  font-family: title, sans-serif;
+  text-align: center;
+  padding: 1em 0 1em 0;
+}
+p {
+  color: var(--textPrincipal);
+  font-family: text, sans-serif;
+}
+
+h2 {
+  color: var(--textPrincipal);
+  font-family: title, sans-serif;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 100%;
+}
+
+input {
+  background-color: var(--backgroundListe);
+  border: 1px solid var(--bordure);
+  color: var(--textSecondairePlaceholder);
+  border-radius: 10px;
+  font-family: text, sans-serif;
+}

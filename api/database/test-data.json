@@ -1,0 +1,296 @@
+{
+  "users": [
+    {
+      "name": "admin",
+      "email": "admin@lapince.fr",
+      "password": "Admin1!!"
+    },
+    {
+      "name": "admin2",
+      "email": "admin2@lapince.fr",
+      "password": "Admin2!!"
+    },
+    {
+      "name": "admin3",
+      "email": "admin3@lapince.fr",
+      "password": "Admin3!!"
+    }
+  ],
+"categories": [
+  {
+    "user_id": 1,
+    "name": "Alimentation",
+    "color": "#e63946",
+    "icon": "/assets/categoryIcons/pot-food.PNG",
+    "max_budget": 320
+  },
+  {
+    "user_id": 1,
+    "name": "Voiture",
+    "color": "#f77f00",
+    "icon": "/assets/categoryIcons/car.PNG",
+    "max_budget": 250
+  },
+  {
+    "user_id": 1,
+    "name": "Loisir",
+    "color": "#ffbe0b",
+    "icon": "/assets/categoryIcons/gamepad.PNG",
+    "max_budget": 180
+  },
+  {
+    "user_id": 1,
+    "name": "Energie",
+    "color": "#8ac926",
+    "icon": "/assets/categoryIcons/bolt.PNG",
+    "max_budget": 140
+  },
+  {
+    "user_id": 1,
+    "name": "Santé",
+    "color": "#1982c4",
+    "icon": "/assets/categoryIcons/hospital.PNG",
+    "max_budget": 120
+  },
+  {
+    "user_id": 1,
+    "name": "Transport",
+    "color": "#6a4c93",
+    "icon": "/assets/categoryIcons/car.PNG",
+    "max_budget": 200
+  },
+  {
+    "user_id": 1,
+    "name": "Abonnements",
+    "color": "#f72585",
+    "icon": "/assets/categoryIcons/screwdriver-wrench.PNG",
+    "max_budget": 80
+  },
+  {
+    "user_id": 2,
+    "name": "Energie",
+    "color": "#3a86ff",
+    "icon": "/assets/categoryIcons/bolt.PNG",
+    "max_budget": 160
+  },
+  {
+    "user_id": 2,
+    "name": "Banque",
+    "color": "#06d6a0",
+    "icon": "/assets/categoryIcons/bank.PNG",
+    "max_budget": 40
+  },
+  {
+    "user_id": 2,
+    "name": "Maison",
+    "color": "#ff5722",
+    "icon": "/assets/categoryIcons/house.PNG",
+    "max_budget": 300
+  },
+  {
+    "user_id": 2,
+    "name": "Courses",
+    "color": "#9b5de5",
+    "icon": "/assets/categoryIcons/cart-plus.PNG",
+    "max_budget": 350
+  },
+  {
+    "user_id": 2,
+    "name": "Loisir",
+    "color": "#ffb4a2",
+    "icon": "/assets/categoryIcons/gamepad.PNG",
+    "max_budget": 150
+  },
+  {
+    "user_id": 2,
+    "name": "Santé",
+    "color": "#e63946",
+    "icon": "/assets/categoryIcons/hospital.PNG",
+    "max_budget": 120
+  },
+  {
+    "user_id": 3,
+    "name": "Restaurants",
+    "color": "#f77f00",
+    "icon": "/assets/categoryIcons/pot-food.PNG",
+    "max_budget": 220
+  },
+  {
+    "user_id": 3,
+    "name": "Loisir",
+    "color": "#ffbe0b",
+    "icon": "/assets/categoryIcons/gamepad.PNG",
+    "max_budget": 200
+  },
+  {
+    "user_id": 3,
+    "name": "Courses",
+    "color": "#8ac926",
+    "icon": "/assets/categoryIcons/cart-plus.PNG",
+    "max_budget": 300
+  },
+  {
+    "user_id": 3,
+    "name": "Santé",
+    "color": "#1982c4",
+    "icon": "/assets/categoryIcons/hospital.PNG",
+    "max_budget": 150
+  },
+  {
+    "user_id": 3,
+    "name": "Transport",
+    "color": "#6a4c93",
+    "icon": "/assets/categoryIcons/car.PNG",
+    "max_budget": 180
+  }
+],
+  "expenses": [
+    {
+      "title": "Course Auchan",
+      "user_id": 1,
+      "category_id": 1,
+      "amount": 78.45,
+      "date": "2026-01-08"
+    },
+    {
+      "title": "Oclock Burger",
+      "user_id": 1,
+      "category_id": 1,
+      "amount": 18.90,
+      "date": "2026-01-14"
+    },
+    {
+      "title": "Supermarché Monop",
+      "user_id": 1,
+      "category_id": 1,
+      "amount": 54.20,
+      "date": "2026-01-28"
+    },
+    {
+      "title": "Essence Total",
+      "user_id": 1,
+      "category_id": 2,
+      "amount": 60.00,
+      "date": "2025-12-15"
+    },
+    {
+      "title": "Révision voiture",
+      "user_id": 1,
+      "category_id": 2,
+      "amount": 140.00,
+      "date": "2026-02-05"
+    },
+    {
+      "title": "Cinéma",
+      "user_id": 1,
+      "category_id": 3,
+      "amount": 28.00,
+      "date": "2026-01-18"
+    },
+    {
+      "title": "Sortie bar",
+      "user_id": 1,
+      "category_id": 3,
+      "amount": 32.00,
+      "date": "2026-01-25"
+    },
+    {
+      "title": "Facture EDF",
+      "user_id": 1,
+      "category_id": 4,
+      "amount": 82.30,
+      "date": "2026-02-10"
+    },
+    {
+      "title": "Médecin",
+      "user_id": 1,
+      "category_id": 5,
+      "amount": 35.00,
+      "date": "2026-01-22"
+    },
+    {
+      "title": "Abonnement Netflix",
+      "user_id": 1,
+      "category_id": 7,
+      "amount": 14.99,
+      "date": "2026-01-12"
+    },
+    {
+      "title": "Bus Pass",
+      "user_id": 1,
+      "category_id": 6,
+      "amount": 45.00,
+      "date": "2026-01-15"
+    },
+    {
+      "title": "Loyer Décembre",
+      "user_id": 2,
+      "category_id": 3,
+      "amount": 650.00,
+      "date": "2025-12-01"
+    },
+    {
+      "title": "Essence Janvier",
+      "user_id": 2,
+      "category_id": 4,
+      "amount": 70.00,
+      "date": "2026-01-10"
+    },
+    {
+      "title": "Courses Carrefour",
+      "user_id": 2,
+      "category_id": 5,
+      "amount": 120.50,
+      "date": "2026-01-15"
+    },
+    {
+      "title": "Cinéma",
+      "user_id": 2,
+      "category_id": 6,
+      "amount": 18.00,
+      "date": "2026-02-12"
+    },
+    {
+      "title": "Peinture Leroy Merlin",
+      "user_id": 2,
+      "category_id": 7,
+      "amount": 74.90,
+      "date": "2026-02-07"
+    },
+    {
+      "title": "Restaurant Sushi",
+      "user_id": 3,
+      "category_id": 8,
+      "amount": 45.00,
+      "date": "2026-01-20"
+    },
+    {
+      "title": "Cinéma",
+      "user_id": 3,
+      "category_id": 9,
+      "amount": 27.00,
+      "date": "2026-01-25"
+    },
+    {
+      "title": "Courses Lidl",
+      "user_id": 3,
+      "category_id": 10,
+      "amount": 95.50,
+      "date": "2026-01-28"
+    },
+    {
+      "title": "Médecin",
+      "user_id": 3,
+      "category_id": 11,
+      "amount": 60.00,
+      "date": "2026-02-05"
+    },
+    {
+      "title": "Essence",
+      "user_id": 3,
+      "category_id": 12,
+      "amount": 30.00,
+      "date": "2026-02-10"
+    }
+  ]
+}
