@@ -1,11 +1,36 @@
 <script>
   import { auth } from "../../services/auth.service";
+  import { onMount } from "svelte";
 
   export let currentPage;
   export let open;
   export let isLoggedIn;
 
-  // Déconnexion
+  let theme = "dark";
+
+  function applyTheme(t) {
+    theme = t;
+    document.documentElement.dataset.theme = t;
+    localStorage.setItem("theme", t);
+  }
+
+  function toggleTheme() {
+    applyTheme(theme === "light" ? "dark" : "light");
+  }
+
+  onMount(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") {
+      theme = saved;
+    } else {
+      const prefersLight = window.matchMedia(
+        "(prefers-color-scheme: light)",
+      ).matches;
+      theme = prefersLight ? "light" : "dark";
+    }
+    document.documentElement.dataset.theme = theme;
+  });
+
   async function handleLogout() {
     try {
       await auth.logout();
@@ -30,13 +55,25 @@
 ></div>
 
 <aside class="sidebar">
-  <button
-    class="close"
-    on:click={() => (open = false)}
-    aria-label="Fermer le menu"
-  >
-    <i class="fa-solid fa-xmark"></i>
-  </button>
+  <div class="closeLight">
+    <button
+      class="theme-switch"
+      on:click={toggleTheme}
+      aria-label="Changer le thème"
+    >
+      <span class:active={theme === "dark"} class="thumb">
+        {theme === "light" ? "☀️" : "🌙"}
+      </span>
+    </button>
+
+    <button
+      class="close"
+      on:click={() => (open = false)}
+      aria-label="Fermer le menu"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
 
   <section class="content">
     <nav class="menu">
@@ -96,15 +133,13 @@
 </aside>
 
 <style>
-  @import "../../css/settings.css";
-
   .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: var(--overlay);
     z-index: 998;
   }
 
@@ -117,7 +152,7 @@
     height: 100vh;
     background-color: var(--backgroundHeaderFooter);
     z-index: 999;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: -4px 0 15px var(--overlay);
     border-left: 2px solid var(--bouttonPrincipal);
     animation: slideIn 0.3s ease;
   }
@@ -141,7 +176,7 @@
   }
 
   .close i {
-    color: white;
+    color: var(--textSecondairePlaceholder);
     font-size: 32px;
   }
 
@@ -165,7 +200,7 @@
     width: 100%;
     padding: 1em;
     font-size: 1.1rem;
-    background-color: var(--buttonBackground);
+    background-color: var(--backgroundCarte);
     color: var(--textPrincipal);
     border: 2px solid var(--bordure);
     border-radius: 8px;
@@ -174,6 +209,10 @@
   }
 
   .btnhome:hover {
-    opacity: 0.85;
+    filter: brightness(0.9);
+  }
+
+  .theme-switch {
+    margin: 1.5em 0 0 1.5em;
   }
 </style>

@@ -1,5 +1,3 @@
-@import "./pageHome.css";
-
 /* -------------------------
    Base
 ------------------------- */
@@ -8,9 +6,6 @@
   display: block;
 }
 
-input {
-  color-scheme: dark;
-}
 /* left grid */
 .username {
   color: var(--textSecondairePlaceholder);
@@ -105,7 +100,7 @@ input {
 /* Boutons de la barre */
 .searchBtn {
   border: none;
-  background-color: var(--backgroundPrincipal);
+  background: none;
   cursor: pointer;
 }
 
@@ -113,7 +108,7 @@ input {
   background: none;
 }
 
-/* Icônes dans la barre (plus robuste que .fa-sliders/.fa-filter) */
+/* Icônes dans la barre */
 .searchBtn i {
   color: var(--textSecondairePlaceholder);
   font-size: 2em;
@@ -132,9 +127,9 @@ input {
   margin-top: 12px;
   padding: 14px;
 
-  border: 1px solid #3c4154;
+  border: 1px solid var(--bordure);
   border-radius: 12px;
-  background: rgba(20, 23, 32, 0.85);
+  background: var(--backgroundListe);
   backdrop-filter: blur(8px);
 }
 
@@ -152,7 +147,7 @@ input {
 }
 
 .field label {
-  color: #c8d4e4;
+  color: var(--textPrincipal);
   font-family: text, sans-serif;
   font-size: 0.95rem;
 }
@@ -161,11 +156,9 @@ input {
 .field input[type="date"] {
   width: 100%;
   padding: 0.8em;
-
-  background-color: var(--backgroundListe, #141720);
-  border: 1px solid #3c4154;
-  color: #e1e1e1;
-
+  background-color: var(--backgroundListe);
+  border: 1px solid var(--bordure);
+  color: var(--textSecondairePlaceholder);
   border-radius: 8px;
   font-size: 14px;
   box-sizing: border-box;
@@ -179,29 +172,23 @@ input {
   margin-top: 12px;
 }
 
-.btnSecondary,
-.btnPrimary {
+.btnSecondary {
   cursor: pointer;
   border: none;
   padding: 0.7em 1em;
   border-radius: 8px;
   font-family: bouton, sans-serif;
   font-weight: bold;
+  background: var(--bouttonPrincipal);
+  border: 1px solid var(--bordure);
+  color: var(--textBtn);
+}
+.btnSecondary:hover {
+  background: var(--boutonPrinciaplHover);
 }
 
-.btnSecondary {
-  background: transparent;
-  border: 1px solid #3c4154;
-  color: #e1e1e1;
-}
-
-.btnPrimary {
-  background: #559cd2;
-  color: #fff;
-}
-
-.btnPrimary:hover {
-  background: #1d6fdb;
+.resultAmount {
+  font-weight: bold;
 }
 
 /* -------------------------
@@ -217,9 +204,11 @@ input {
 
 .date {
   margin-bottom: 0.2em;
+  color: var(--textPrincipal);
+  font-size: 0.9em;
 }
 
-/* Conteneur des résultats (si tu l’utilises) */
+/* Conteneur des résultats */
 .searchResults {
   margin-top: 0.5em;
   background-color: var(--backgroundCarte);
@@ -237,30 +226,39 @@ input {
   width: 100%;
   padding: 0.6em 0.8em;
   border-bottom: 1px solid var(--bordure);
+  align-items: center;
 }
 
 /* Partie gauche (icone + titre) */
 .resultLeft {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 1em;
   min-width: 0;
 }
 
 .resultTitle {
-  font-size: 0.95rem;
+  font-size: 1.2em;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-right: -2em;
+  /* white-space: nowrap;  */
 }
 
-.resultAmount {
-  font-weight: bold;
-  white-space: nowrap;
+.amountDashboard {
+  text-align: right;
 }
 
 .miniIcon {
   border-radius: 4px;
+  transition: filter 0.25s ease;
+}
+html[data-theme="dark"] .miniIcon {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="light"] .miniIcon {
+  filter: none;
 }
 
 .dot {
@@ -274,8 +272,12 @@ input {
   border: 2px solid var(--cat-color);
   border-radius: 10px;
   margin: 0.5em 0;
-  width: 100%; /* <-- au lieu de 105% */
+  width: 100%;
   color: var(--textSecondairePlaceholder);
+}
+
+.btn:hover {
+  background: var(--boutonPrinciaplHover);
 }
 
 .btnEdit {
@@ -294,17 +296,16 @@ input {
 
 .editBtn i,
 .deleteBtn i {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 /* -------------------------
    Category blocks (droite)
-   (tu as 2 versions : normal + "1")
 ------------------------- */
 
 .categoryDescription {
   background-color: var(--bg-color);
-  color: white;
+  color: var(--textPrincipal);
   width: 100%;
   align-items: center;
   margin: 0 0 0.5em 0;
@@ -316,23 +317,27 @@ input {
 
 .categoryDescription i {
   border: none;
-}
-
-.categoryDescription i {
   font-size: 2em;
 }
 
 .nameCategory,
 .sum,
 .total {
-  color: #fff;
+  color: var(--textPrincipal);
   letter-spacing: 0.1em;
   opacity: 0.9;
   margin: 0;
 }
 
-.miniIcon {
-  filter: brightness(0) invert(1);
+.toast-container {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* -------------------------
@@ -345,6 +350,7 @@ input {
     grid-template-columns: 40% 20% 20%;
   }
 }
+
 @media (min-width: 800px) {
   .main {
     display: grid;
@@ -376,5 +382,14 @@ input {
   }
   .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .miniIcon {
+    display: none;
+  }
+  .resultTitle {
+    margin-right: -1em;
   }
 }

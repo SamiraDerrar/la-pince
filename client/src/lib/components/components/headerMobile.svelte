@@ -5,12 +5,24 @@
   import { onMount } from "svelte";
 
   export let currentPage;
-  export let isLoggedIn; // Recevoir l'état de connexion
+  export let isLoggedIn;
 
   let open = false;
   let userName = "";
 
-  // Fonction  our affichage du nom du user quand il est connecté
+  // THEME
+  let theme = "dark";
+
+  function applyTheme(t) {
+    theme = t;
+    document.documentElement.dataset.theme = t; // html[data-theme="..."]
+    localStorage.setItem("theme", t);
+  }
+
+  function toggleTheme() {
+    applyTheme(theme === "light" ? "dark" : "light");
+  }
+
   async function loadUserName() {
     if (!isLoggedIn) return;
 
@@ -23,6 +35,18 @@
   }
 
   onMount(() => {
+    // init theme
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") {
+      theme = saved;
+    } else {
+      const prefersLight = window.matchMedia(
+        "(prefers-color-scheme: light)",
+      ).matches;
+      theme = prefersLight ? "light" : "dark";
+    }
+    document.documentElement.dataset.theme = theme;
+
     loadUserName();
   });
 
@@ -32,23 +56,14 @@
     userName = "";
   }
 
-  // Fonction de déconnexion
   async function handleLogout() {
     try {
-      // Appel à l'API backend pour déconnecter
       await auth.logout();
-
-      // Supprimer le token du localStorage
       localStorage.removeItem("token");
-
-      // Mettre à jour l'état de connexion
       isLoggedIn = false;
-
-      // Rediriger vers la page d'accueil
       currentPage = "home";
     } catch (err) {
       console.error("Erreur lors de la déconnexion :", err);
-      // Même en cas d'erreur API, on déconnecte côté client
       localStorage.removeItem("token");
       isLoggedIn = false;
       currentPage = "home";
@@ -68,7 +83,9 @@
     <!--affichage du nom du user quand il est connecté -->
 
     {#if isLoggedIn && userName}
-      <p class="textwelcome">Bienvenue {userName}</p>
+      <p class="textwelcome">
+        Bienvenue {userName.charAt(0).toUpperCase() + userName.slice(1)}
+      </p>
     {/if}
 
     <section class="deskstop">
@@ -99,9 +116,16 @@
 
         <!-- Bouton de déconnexion -->
         <button class="btn" on:click={handleLogout}> Se déconnecter </button>
-
-        <i class="iconUser fa-solid fa-user-check"></i>
       {/if}
+      <button
+        class="theme-switch"
+        on:click={toggleTheme}
+        aria-label="Changer le thème"
+      >
+        <span class:active={theme === "dark"} class="thumb">
+          {theme === "light" ? "☀️" : "🌙"}
+        </span>
+      </button>
     </section>
     <button id="sidebar" on:click={() => (open = !open)}>☰</button>
   </section>
@@ -127,23 +151,30 @@
   img {
     height: 100px;
   }
+  .deskstop {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
   .deskstop i {
     font-size: 25px;
   }
   .btn {
     margin-right: 1em;
+    color: var(--textBtn);
+    padding: 0.5em 2em;
+  }
+  .btn:hover {
+    background: var(--boutonPrinciaplHover);
   }
   #sidebar {
     margin-right: 0.5em;
     padding: 0.5em;
-    background-color: var(--backgroundHeaderFooter);
+    background: none;
     color: var(--textPrincipal);
     cursor: pointer;
     font-size: 2em;
     border: none;
-  }
-  .deskstop {
-    margin-right: 2rem;
   }
   .iconUser {
     color: white;
@@ -157,5 +188,17 @@
     .deskstop {
       display: none;
     }
+  }
+
+  .themeBtn {
+    border: 1px solid var(--bordure);
+    background: var(--backgroundCarte);
+    color: var(--textPrincipal);
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .themeBtn:hover {
+    filter: brightness(1.1);
   }
 </style>
